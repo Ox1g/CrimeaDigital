@@ -6,8 +6,7 @@
     <fragment
         android:id="@+id/matchListFragment"
         android:name="com.example.crimeadigital.fragments.MatchListFragment"
-        android:label="Match List"
-        tools:layout="@layout/fragment_match_list" >
+        tools:layout="@layout/fragment_match_list">
         <action
             android:id="@+id/action_matchListFragment_to_matchDetailFragment"
             app:destination="@id/matchDetailFragment" />
@@ -16,6 +15,9 @@
     <fragment
         android:id="@+id/matchDetailFragment"
         android:name="com.example.crimeadigital.fragments.MatchDetailFragment"
-        android:label="Match Detail"
-        tools:layout="@layout/fragment_match_detail" />
+        tools:layout="@layout/fragment_match_detail">
+        <argument
+            android:name="match"
+            app:argType="com.example.crimeadigital.model.MatchDetail" />
+    </fragment>
 </navigation>
