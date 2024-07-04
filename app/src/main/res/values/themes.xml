@@ -12,5 +12,7 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:statusBarColor">@color/design_default_color_on_primary</item>
         <item name="android:navigationBarColor">@color/design_default_color_primary</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:padding="16dp">
-
-<TextView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Match Details"
-    android:textSize="24sp"
-    android:textStyle="bold" />
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/matchNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match Number" />
+
+    <TextView
+        android:id="@+id/roundNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Round Number" />
+
+    <TextView
+        android:id="@+id/dateUtc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location" />
+
+    <TextView
+        android:id="@+id/homeTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Team" />
+
+    <TextView
+        android:id="@+id/awayTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Away Team" />
+
+    <TextView
+        android:id="@+id/homeTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home Team Score" />
+
+    <TextView
+        android:id="@+id/awayTeamScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Away Team Score" />
+
 </LinearLayout>
