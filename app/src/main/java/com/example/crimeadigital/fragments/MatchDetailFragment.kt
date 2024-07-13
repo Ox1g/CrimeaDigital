@@ -1,9 +1,12 @@
 package com.example.crimeadigital.fragments
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.crimeadigital.R
 import com.example.crimeadigital.model.MatchDetail
@@ -26,5 +29,21 @@ class MatchDetailFragment : Fragment(R.layout.fragment_match_detail) {
         view.findViewById<TextView>(R.id.awayTeam).text = "Away Team: ${matchDetail.AwayTeam}"
         view.findViewById<TextView>(R.id.homeTeamScore).text = "Home Team Score: ${matchDetail.HomeTeamScore}"
         view.findViewById<TextView>(R.id.awayTeamScore).text = "Away Team Score: ${matchDetail.AwayTeamScore}"
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                findNavController().navigateUp()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 }
