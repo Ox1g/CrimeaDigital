@@ -1,61 +1,69 @@
 package com.example.crimeadigital.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.crimeadigital.databinding.FragmentMatchListBinding
+import androidx.recyclerview.widget.RecyclerView
 import com.example.crimeadigital.R
 import com.example.crimeadigital.adapters.MatchListAdapter
 import com.example.crimeadigital.model.MatchDetail
 
 class MatchListFragment : Fragment(R.layout.fragment_match_list) {
 
-    private var _binding: FragmentMatchListBinding? = null
-    private val binding get() = _binding!!
+    private val matchListAdapter: MatchListAdapter by lazy { MatchListAdapter() }
+    private lateinit var recyclerView: RecyclerView
+    private var isGrid = false
+    private var matchList: List<MatchDetail> = emptyList()
 
-    private lateinit var matchListAdapter: MatchListAdapter
-    private val matchList = listOf(
-        MatchDetail(
-            MatchNumber = 1,
-            RoundNumber = 1,
-            DateUtc = "2021-08-13 19:00:00Z",
-            Location = "Brentford Community Stadium",
-            HomeTeam = "Brentford",
-            AwayTeam = "Arsenal",
-            Group = null,
-            HomeTeamScore = 2,
-            AwayTeamScore = 0
-        )
-    )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        matchList = generateFakeValues()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMatchListBinding.inflate(inflater, container, false)
-        return binding.root
+        val view = inflater.inflate(R.layout.fragment_match_list, container, false)
+        recyclerView = view.findViewById(R.id.recyclerView)
+        setupRecyclerView()
+        return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        matchListAdapter = MatchListAdapter(matchList) { match ->
-            val action = MatchListFragmentDirections.actionMatchListFragmentToMatchDetailFragment(match)
-            findNavController().navigate(action)
+    private fun generateFakeValues(): List<MatchDetail> {
+        return List(20) { i ->
+            MatchDetail(
+                MatchNumber = i,
+                RoundNumber = 1,
+                DateUtc = "2023-07-08",
+                Location = "Stadium $i",
+                HomeTeam = "Team $i",
+                AwayTeam = "Team ${i + 1}",
+                Group = "Group A",
+                HomeTeamScore = i,
+                AwayTeamScore = i + 1
+            )
         }
+    }
 
-        binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
+    private fun setupRecyclerView() {
+        recyclerView.apply {
             adapter = matchListAdapter
+            layoutManager = if (isGrid) GridLayoutManager(context, 2) else LinearLayoutManager(context)
+            setHasFixedSize(true)
         }
+        matchListAdapter.setItems(matchList)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    @SuppressLint("NotifyDataSetChanged")
+    fun switchLayout() {
+        isGrid = !isGrid
+        setupRecyclerView()
+        matchListAdapter.notifyDataSetChanged()
     }
 }

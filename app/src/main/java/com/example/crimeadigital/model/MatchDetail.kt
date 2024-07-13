@@ -2,6 +2,7 @@ package com.example.crimeadigital.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+
 @Parcelize
 data class MatchDetail(
     val MatchNumber: Int,
