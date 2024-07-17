@@ -7,8 +7,8 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
@@ -21,30 +21,16 @@ import com.example.crimeadigital.model.MatchDetail
 fun MatchListScreen(
     navController: NavController,
     onSwitchLayoutClick: () -> Unit,
-    isListView: Boolean
-) {
-    val matches = remember {
-        List(20) { index ->
-            MatchDetail(
-                MatchNumber = index + 1,
-                RoundNumber = index % 5 + 1,
-                DateUtc = "2024-07-17",
-                Location = "Location ${index + 1}",
-                HomeTeam = "Home Team ${index + 1}",
-                AwayTeam = "Away Team ${index + 1}",
-                Group = "Group ${index % 4 + 1}",
-                HomeTeamScore = (0..5).random(),
-                AwayTeamScore = (0..5).random()
-            )
-        }
-    }
+    isListView: Boolean,
+    matches: List<MatchDetail>
 
+) {
     Scaffold(
         topBar = {
             AppBarCompose(
                 title = "Match List",
                 onSwitchLayoutClick = onSwitchLayoutClick,
-                switchIcon = if (isListView) Icons.Default.List else Icons.Default.Close,
+                switchIcon = if (isListView) Icons.AutoMirrored.Filled.List else Icons.Default.Close,
                 contentDescription = "Switch Layout"
             )
         }
