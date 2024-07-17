@@ -7,8 +7,8 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.*
@@ -30,7 +30,7 @@ fun MatchListScreen(
             AppBarCompose(
                 title = "Match List",
                 onSwitchLayoutClick = onSwitchLayoutClick,
-                switchIcon = if (isListView) Icons.Default.List else Icons.Default.Close,
+                switchIcon = if (isListView) Icons.AutoMirrored.Filled.List else Icons.Default.Close,
                 contentDescription = "Switch Layout"
             )
         }
