@@ -29,8 +29,8 @@ class MatchRepository {
                 HomeTeam = "Team $i",
                 AwayTeam = "Team ${i + 1}",
                 Group = "Group A",
-                HomeTeamScore = i,
-                AwayTeamScore = i + 1
+                AwayTeamScore = i + 1,
+                HomeTeamScore = i + 1
             )
         }
     }
