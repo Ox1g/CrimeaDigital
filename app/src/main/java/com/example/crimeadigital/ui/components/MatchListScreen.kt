@@ -21,24 +21,10 @@ import com.example.crimeadigital.model.MatchDetail
 fun MatchListScreen(
     navController: NavController,
     onSwitchLayoutClick: () -> Unit,
-    isListView: Boolean
-) {
-    val matches = remember {
-        List(20) { index ->
-            MatchDetail(
-                MatchNumber = index + 1,
-                RoundNumber = index % 5 + 1,
-                DateUtc = "2024-07-17",
-                Location = "Location ${index + 1}",
-                HomeTeam = "Home Team ${index + 1}",
-                AwayTeam = "Away Team ${index + 1}",
-                Group = "Group ${index % 4 + 1}",
-                HomeTeamScore = (0..5).random(),
-                AwayTeamScore = (0..5).random()
-            )
-        }
-    }
+    isListView: Boolean,
+    matches: List<MatchDetail>
 
+) {
     Scaffold(
         topBar = {
             AppBarCompose(

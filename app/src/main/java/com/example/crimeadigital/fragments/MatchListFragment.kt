@@ -1,6 +1,5 @@
 package com.example.crimeadigital.fragments
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.crimeadigital.R
 import com.example.crimeadigital.adapters.MatchListAdapter
-import com.example.crimeadigital.model.MatchDetail
 import kotlinx.coroutines.launch
 import com.example.crimeadigital.repository.MatchRepository
 import com.example.crimeadigital.utils.Result
@@ -69,10 +67,4 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list) {
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun switchLayout() {
-        isGrid = !isGrid
-        setupRecyclerView()
-        matchListAdapter.notifyDataSetChanged()
-    }
 }

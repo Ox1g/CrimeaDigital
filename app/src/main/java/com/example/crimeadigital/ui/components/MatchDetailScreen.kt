@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,7 +24,7 @@ fun MatchDetailScreen(
             AppBarCompose(
                 title = "Match Details",
                 onSwitchLayoutClick = {},
-                switchIcon = Icons.Default.List,
+                switchIcon = Icons.AutoMirrored.Filled.List,
                 contentDescription = "Switch Layout",
                 showBackButton = true,
                 onBackClick = { navController.popBackStack() }
@@ -42,6 +43,7 @@ fun MatchDetailScreen(
             Text(text = "Location: ${matchDetail.Location}")
             Text(text = "Home Team: ${matchDetail.HomeTeam}")
             Text(text = "Away Team: ${matchDetail.AwayTeam}")
+            Text(text = "Group Team: ${matchDetail.Group}")
             Text(text = "Home Team Score: ${matchDetail.HomeTeamScore}")
             Text(text = "Away Team Score: ${matchDetail.AwayTeamScore}")
         }
