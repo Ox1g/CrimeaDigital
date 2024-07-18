@@ -1,5 +1,6 @@
 package com.example.crimeadigital.ui.navigation
 
+import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
@@ -22,29 +23,18 @@ import com.example.crimeadigital.ui.components.MatchDetailScreen
 import com.example.crimeadigital.ui.components.MatchListScreen
 import com.example.crimeadigital.model.MatchDetail
 import com.example.crimeadigital.network.RetrofitClient
+import com.example.crimeadigital.repository.MatchRepository
 
 @Composable
-fun MainScreen() {
+fun MainScreen(context: Context) {
     val navController = rememberNavController()
     var isListView by rememberSaveable { mutableStateOf(true) }
     var matches by remember { mutableStateOf<List<MatchDetail>?>(null) }
     var loading by remember { mutableStateOf(true) }
+    val matchRepository = remember { MatchRepository(context) }
 
     LaunchedEffect(Unit) {
-        val response = RetrofitClient.apiService.getMatches()
-        matches = response.map {
-            MatchDetail(
-                MatchNumber = it.MatchNumber,
-                RoundNumber = it.RoundNumber,
-                DateUtc = it.DateUtc,
-                Location = it.Location,
-                HomeTeam = it.HomeTeam,
-                AwayTeam = it.AwayTeam,
-                Group = it.Group,
-                HomeTeamScore = it.HomeTeamScore,
-                AwayTeamScore = it.AwayTeamScore
-            )
-        }
+        matches = matchRepository.getMatches()
         loading = false
     }
 
@@ -85,5 +75,5 @@ fun LoadingIndicator() {
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
-    MainScreen()
+    MainScreen(context = androidx.compose.ui.platform.LocalContext.current)
 }
