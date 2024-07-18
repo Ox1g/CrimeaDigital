@@ -1,5 +1,6 @@
 package com.example.crimeadigital
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.crimeadigital.databinding.ActivityMainBinding
-import com.example.crimeadigital.fragments.MatchListFragment
+//import com.example.crimeadigital.fragments.MatchListFragment
 import com.example.crimeadigital.ui.navigation.MainScreen
 import com.example.crimeadigital.ui.theme.CrimeaDigitalTheme
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MaterialTheme {
                 Surface {
-                    MainScreen()
+                    MainScreen(applicationContext)
                 }
             }
         }

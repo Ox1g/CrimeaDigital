@@ -17,13 +17,13 @@ import kotlinx.coroutines.launch
 import com.example.crimeadigital.repository.MatchRepository
 import com.example.crimeadigital.utils.Result
 
-class MatchListFragment : Fragment(R.layout.fragment_match_list) {
+/*class MatchListFragment : Fragment(R.layout.fragment_match_list) {
 
     private val matchListAdapter: MatchListAdapter by lazy { MatchListAdapter() }
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private var isGrid = false
-    private val matchRepository = MatchRepository()
+    private val matchRepository = MatchRepository(context)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,3 +68,4 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list) {
     }
 
 }
+*/

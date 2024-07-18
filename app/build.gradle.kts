@@ -1,10 +1,9 @@
-@file:Suppress("UNUSED_EXPRESSION")
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.navigation.safe.args)
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 
@@ -67,7 +66,10 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation("androidx.compose.material3:material3-android:1.2.0-rc01")
+    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.room.runtime.v260)
+    kapt (libs.room.compiler)
+    implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation (libs.androidx.appcompat)
