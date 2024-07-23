@@ -23,7 +23,6 @@ fun MatchListScreen(
     onSwitchLayoutClick: () -> Unit,
     isListView: Boolean,
     matches: List<MatchDetail>
-
 ) {
     Scaffold(
         topBar = {

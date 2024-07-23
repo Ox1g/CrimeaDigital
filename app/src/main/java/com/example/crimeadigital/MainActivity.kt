@@ -1,22 +1,19 @@
 package com.example.crimeadigital
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.crimeadigital.databinding.ActivityMainBinding
+import com.example.crimeadigital.repository.MatchRepository
 //import com.example.crimeadigital.fragments.MatchListFragment
 import com.example.crimeadigital.ui.navigation.MainScreen
-import com.example.crimeadigital.ui.theme.CrimeaDigitalTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    @Inject lateinit var matchRepository: MatchRepository
 //    private lateinit var binding: ActivityMainBinding
 //    private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -26,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             MaterialTheme {
                 Surface {
-                    MainScreen(applicationContext)
+                    MainScreen(matchRepository)
                 }
             }
         }
