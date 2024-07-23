@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.navigation.safe.args)
     id("kotlin-parcelize")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 
@@ -46,7 +47,7 @@ android {
         viewBinding = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
     packaging {
         resources {
@@ -68,7 +69,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.room.runtime.v260)
-    kapt (libs.room.compiler)
+    implementation(libs.androidx.runtime.livedata)
+    kapt(libs.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
@@ -77,6 +79,8 @@ dependencies {
     implementation(libs.coil.compose)
     implementation (libs.retrofit.v290)
     implementation (libs.converter.gson)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -86,3 +90,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 }
 
+kapt {
+    correctErrorTypes = true
+}

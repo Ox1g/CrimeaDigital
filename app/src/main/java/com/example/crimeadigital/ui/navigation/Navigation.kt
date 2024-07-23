@@ -1,6 +1,5 @@
 package com.example.crimeadigital.ui.navigation
 
-import android.content.Context
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
@@ -22,20 +21,24 @@ import androidx.navigation.navArgument
 import com.example.crimeadigital.ui.components.MatchDetailScreen
 import com.example.crimeadigital.ui.components.MatchListScreen
 import com.example.crimeadigital.model.MatchDetail
-import com.example.crimeadigital.network.RetrofitClient
 import com.example.crimeadigital.repository.MatchRepository
+import kotlinx.coroutines.launch
 
 @Composable
-fun MainScreen(context: Context) {
+fun MainScreen(matchRepository: MatchRepository) {
     val navController = rememberNavController()
     var isListView by rememberSaveable { mutableStateOf(true) }
-    var matches by remember { mutableStateOf<List<MatchDetail>?>(null) }
+    var matches by remember { mutableStateOf<List<MatchDetail>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
-    val matchRepository = remember { MatchRepository(context) }
 
     LaunchedEffect(Unit) {
-        matches = matchRepository.getMatches()
-        loading = false
+        launch {
+            matchRepository.fetchAndCacheMatches()
+            matchRepository.getMatches().collect { matchList ->
+                matches = matchList
+                loading = false
+            }
+        }
     }
 
     NavHost(navController = navController, startDestination = "match_list") {
@@ -47,7 +50,7 @@ fun MainScreen(context: Context) {
                     navController = navController,
                     isListView = isListView,
                     onSwitchLayoutClick = { isListView = !isListView },
-                    matches = matches ?: emptyList()
+                    matches = matches
                 )
             }
         }
@@ -56,7 +59,7 @@ fun MainScreen(context: Context) {
             arguments = listOf(navArgument("matchNumber") { type = NavType.IntType })
         ) { backStackEntry ->
             val matchNumber = backStackEntry.arguments?.getInt("matchNumber") ?: return@composable
-            val matchDetail = matches?.find { it.MatchNumber == matchNumber }
+            val matchDetail = matches.find { it.MatchNumber == matchNumber }
             if (matchDetail != null) {
                 MatchDetailScreen(navController = navController, matchDetail = matchDetail)
             }
@@ -72,8 +75,6 @@ fun LoadingIndicator() {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun MainScreenPreview() {
-    MainScreen(context = androidx.compose.ui.platform.LocalContext.current)
-}
+
+
+
