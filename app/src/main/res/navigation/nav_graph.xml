@@ -18,6 +18,6 @@
         tools:layout="@layout/fragment_match_detail">
         <argument
             android:name="match"
-            app:argType="com.example.crimeadigital.model.MatchDetail" />
+            app:argType="com.example.crimeadigital.data.remote.MatchResponse" />
     </fragment>
 </navigation>

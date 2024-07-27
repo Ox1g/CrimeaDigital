@@ -11,12 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.crimeadigital.model.MatchDetail
+import com.example.crimeadigital.domain.model.Match
 
 @Composable
 fun MatchDetailScreen(
     navController: NavController,
-    matchDetail: MatchDetail
+    matchResponse: Match?
 ) {
     Scaffold(
         topBar = {
@@ -36,15 +36,15 @@ fun MatchDetailScreen(
                 .padding(padding)
                 .padding(16.dp)
         ) {
-            Text(text = "Match Number: ${matchDetail.MatchNumber}")
-            Text(text = "Round Number: ${matchDetail.RoundNumber}")
-            Text(text = "Date: ${matchDetail.DateUtc}")
-            Text(text = "Location: ${matchDetail.Location}")
-            Text(text = "Home Team: ${matchDetail.HomeTeam}")
-            Text(text = "Away Team: ${matchDetail.AwayTeam}")
-            Text(text = "Group Team: ${matchDetail.Group}")
-            Text(text = "Home Team Score: ${matchDetail.HomeTeamScore}")
-            Text(text = "Away Team Score: ${matchDetail.AwayTeamScore}")
+            Text(text = "Match Number: ${matchResponse?.matchNumber}")
+            Text(text = "Round Number: ${matchResponse?.roundNumber}")
+            Text(text = "Date: ${matchResponse?.dateUtc}")
+            Text(text = "Location: ${matchResponse?.location}")
+            Text(text = "Home Team: ${matchResponse?.homeTeam}")
+            Text(text = "Away Team: ${matchResponse?.awayTeam}")
+            Text(text = "Group Team: ${matchResponse?.group}")
+            Text(text = "Home Team Score: ${matchResponse?.homeTeamScore}")
+            Text(text = "Away Team Score: ${matchResponse?.awayTeamScore}")
         }
     }
 }

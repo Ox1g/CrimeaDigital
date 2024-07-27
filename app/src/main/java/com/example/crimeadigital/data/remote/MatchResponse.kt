@@ -1,10 +1,6 @@
-package com.example.crimeadigital.model
+package com.example.crimeadigital.data.remote
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class MatchDetail(
+data class MatchResponse(
     val MatchNumber: Int,
     val RoundNumber: Int,
     val DateUtc: String,
@@ -14,4 +10,4 @@ data class MatchDetail(
     val Group: String?,
     val HomeTeamScore: Int,
     val AwayTeamScore: Int
-):Parcelable
+)

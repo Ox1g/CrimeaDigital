@@ -1,10 +1,9 @@
-package com.example.crimeadigital.repository
+package com.example.crimeadigital.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.crimeadigital.model.MatchEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

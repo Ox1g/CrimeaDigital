@@ -81,6 +81,7 @@ dependencies {
     implementation (libs.converter.gson)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation (libs.androidx.hilt.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
