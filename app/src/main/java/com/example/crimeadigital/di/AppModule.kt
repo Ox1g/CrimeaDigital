@@ -2,11 +2,11 @@ package com.example.crimeadigital.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.crimeadigital.network.ApiService
-import com.example.crimeadigital.network.RetrofitClient
-import com.example.crimeadigital.repository.MatchDao
-import com.example.crimeadigital.repository.MatchDatabase
-import com.example.crimeadigital.repository.MatchRepository
+import com.example.crimeadigital.data.local.MatchDao
+import com.example.crimeadigital.data.local.MatchDatabase
+import com.example.crimeadigital.data.remote.ApiService
+import com.example.crimeadigital.domain.repository.MatchRepository
+import com.example.crimeadigital.data.repository.MatchRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +21,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideApiService(): ApiService {
-        return RetrofitClient.apiService
+        return ApiService.create()
     }
 
     @Provides
@@ -40,6 +40,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideMatchRepository(matchDao: MatchDao, apiService: ApiService): MatchRepository {
-        return MatchRepository(matchDao, apiService)
+        return MatchRepositoryImpl(matchDao, apiService)
     }
 }

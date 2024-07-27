@@ -1,4 +1,4 @@
-package com.example.crimeadigital.model
+package com.example.crimeadigital.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
