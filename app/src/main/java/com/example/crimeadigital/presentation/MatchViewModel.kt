@@ -26,7 +26,7 @@ class MatchViewModel @Inject constructor(
         fetchMatches()
     }
 
-    private fun fetchMatches() {
+    fun fetchMatches() {
         viewModelScope.launch {
             _loading.value = true
             try {
