@@ -70,6 +70,8 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.room.runtime.v260)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.junit.ktx)
+    implementation(libs.androidx.runner)
     kapt(libs.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
@@ -83,12 +85,18 @@ dependencies {
     kapt(libs.hilt.android.compiler)
     implementation (libs.androidx.hilt.navigation.compose)
     testImplementation(libs.junit)
+    testImplementation (libs.mockito.core)
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation (libs.robolectric)
+    testImplementation (libs.androidx.room.testing)
+    testImplementation (libs.androidx.runner)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(kotlin("test"))
 }
 
 kapt {
