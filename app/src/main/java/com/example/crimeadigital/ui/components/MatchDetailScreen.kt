@@ -34,7 +34,7 @@ fun MatchDetailScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp)
+                .padding(20.dp)
         ) {
             Text(text = "Match Number: ${matchResponse?.matchNumber}")
             Text(text = "Round Number: ${matchResponse?.roundNumber}")

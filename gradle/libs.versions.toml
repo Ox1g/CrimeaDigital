@@ -21,21 +21,27 @@ mockitoCore = "3.9.0"
 navigation = "2.7.7"
 material3Android = "1.2.1"
 navigationCompose = "2.7.7"
+pagingRuntimeKtx = "3.3.1"
 retrofitVersion = "2.9.0"
 robolectric = "4.7.3"
 roomCompiler = "2.6.1"
 roomKtx = "2.6.1"
+roomPaging = "2.6.1"
 roomRuntimeVersion = "2.6.1"
 roomTesting = "2.6.1"
 runtimeLivedata = "1.6.8"
 junitKtx = "1.2.1"
 runner = "1.6.1"
+pagingCommonAndroid = "3.3.1"
 
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatResources" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingRuntimeKtx" }
+androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingRuntimeKtx" }
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
+androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "roomPaging" }
 androidx-room-runtime-v260 = { module = "androidx.room:room-runtime", version.ref = "roomRuntimeVersion" }
 androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "roomTesting" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
@@ -69,6 +75,7 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCom
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitKtx" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+androidx-paging-common-android = { group = "androidx.paging", name = "paging-common-android", version.ref = "pagingCommonAndroid" }
 
 
 [plugins]
