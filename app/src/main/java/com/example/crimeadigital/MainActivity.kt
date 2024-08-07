@@ -4,13 +4,10 @@
     import androidx.activity.compose.setContent
     import androidx.activity.viewModels
     import androidx.appcompat.app.AppCompatActivity
-    import androidx.compose.material3.MaterialTheme
-    import androidx.compose.material3.Surface
     import com.example.crimeadigital.presentation.MatchViewModel
     import com.example.crimeadigital.ui.navigation.MainScreen
     import com.example.crimeadigital.ui.theme.CrimeaDigitalTheme
     import dagger.hilt.android.AndroidEntryPoint
-    import javax.inject.Inject
 
     @AndroidEntryPoint
     class MainActivity : AppCompatActivity() {
