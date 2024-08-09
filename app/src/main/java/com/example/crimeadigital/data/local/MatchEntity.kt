@@ -18,7 +18,7 @@ data class MatchEntity(
     val awayTeamScore: Int?
 ) {
     fun getLocalDateTime(): String {
-        val utcFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss'Z'", Locale.getDefault())
+        val utcFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         utcFormat.timeZone = TimeZone.getTimeZone("UTC")
         return try {
             val date = utcFormat.parse(dateUtc)
