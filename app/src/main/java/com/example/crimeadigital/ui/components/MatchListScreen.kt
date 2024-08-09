@@ -18,7 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.paging.LoadState
@@ -71,20 +70,29 @@ fun MatchListScreen(
                         items(searchResults) { match ->
                             MatchListItem(match = match.toEntity(), onClick = {
                                 navController.navigate("match_detail/${match.matchNumber}")
-                            })
-                            HorizontalDivider(color = Color.Gray, thickness = 1.dp)
+                            }, modifier = Modifier.fillMaxWidth())
                         }
                     }
                 } else {
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(2),
+                    BoxWithConstraints(
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        items(searchResults) { match ->
-                            MatchListItem(match = match.toEntity(), onClick = {
-                                navController.navigate("match_detail/${match.matchNumber}")
-                            })
-                            HorizontalDivider(thickness = 1.dp, color = Color.Gray)
+                        val constraints = this.constraints
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(2),
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            items(searchResults) { match ->
+                                MatchListItem(
+                                    match = match.toEntity(),
+                                    onClick = {
+                                        navController.navigate("match_detail/${match.matchNumber}")
+                                    },
+                                    modifier = Modifier
+                                        .width((constraints.maxWidth / 2).dp)
+                                        .height(200.dp) // Fixed height for consistency
+                                )
+                            }
                         }
                     }
                 }
@@ -101,23 +109,28 @@ fun MatchListScreen(
                                     match?.let {
                                         MatchListItem(match = it, onClick = {
                                             navController.navigate("match_detail/${it.matchNumber}")
-                                        })
-                                        HorizontalDivider(color = Color.Gray, thickness = 1.dp)
+                                        }, modifier = Modifier.fillMaxWidth())
                                     }
                                 }
                             }
                         } else {
-                            LazyVerticalGrid(
-                                columns = GridCells.Fixed(2),
+                            BoxWithConstraints(
                                 modifier = Modifier.fillMaxSize()
                             ) {
-                                items(pagedMatches.itemCount) { index ->
-                                    val match = pagedMatches[index]
-                                    match?.let {
-                                        MatchListItem(match = it, onClick = {
-                                            navController.navigate("match_detail/${it.matchNumber}")
-                                        })
-                                        HorizontalDivider(thickness = 1.dp, color = Color.Gray)
+                                val constraints = this.constraints
+                                LazyVerticalGrid(
+                                    columns = GridCells.Fixed(2),
+                                    modifier = Modifier.fillMaxSize()
+                                ) {
+                                    items(pagedMatches.itemCount) { index ->
+                                        val match = pagedMatches[index]
+                                        match?.let {
+                                            MatchListItem(match = it, onClick = {
+                                                navController.navigate("match_detail/${it.matchNumber}")
+                                            }, modifier = Modifier
+                                                .width((constraints.maxWidth / 2).dp)
+                                                .height(200.dp)) // Fixed height for consistency
+                                        }
                                     }
                                 }
                             }
@@ -137,7 +150,7 @@ fun Match.toEntity(): MatchEntity {
         location = this.location,
         homeTeam = this.homeTeam,
         awayTeam = this.awayTeam,
-        group = this.group,
+        group = this.group.toString(),
         homeTeamScore = this.homeTeamScore,
         awayTeamScore = this.awayTeamScore
     )

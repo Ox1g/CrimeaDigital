@@ -8,6 +8,6 @@ data class Match(
     val homeTeam: String,
     val awayTeam: String,
     val group: String?,
-    val homeTeamScore: Int,
-    val awayTeamScore: Int
+    val homeTeamScore: Int?,
+    val awayTeamScore: Int?
 )
