@@ -29,7 +29,7 @@ class MatchRepositoryImpl(
                     location = it.location,
                     homeTeam = it.homeTeam,
                     awayTeam = it.awayTeam,
-                    group = it.group.toString(),
+                    group = it.group,
                     homeTeamScore = it.homeTeamScore,
                     awayTeamScore = it.awayTeamScore
                 )
@@ -50,7 +50,7 @@ class MatchRepositoryImpl(
                         location = it.Location,
                         homeTeam = it.HomeTeam,
                         awayTeam = it.AwayTeam,
-                        group = it.Group,
+                        group = it.Group.toString(),
                         homeTeamScore = it.HomeTeamScore,
                         awayTeamScore = it.AwayTeamScore
                     )
